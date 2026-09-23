@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-950 text-slate-100 font-sans antialiased overflow-x-hidden;
+  }
+}
+
+/* Custom Scrollbar for Operational Cockpit */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Leaflet Dark Map Overrides */
+.leaflet-container {
+  background: #060a17 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid #334155 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7) !important;
+}
+
+.leaflet-popup-tip {
+  background: #0f172a !important;
+}
+
+/* Operational Badges & Colors */
+.badge-critical {
+  @apply bg-red-950/80 text-red-300 border border-red-700/60 font-mono text-xs px-2.5 py-1 rounded font-semibold tracking-wide uppercase;
+}
+
+.badge-high {
+  @apply bg-orange-950/80 text-orange-300 border border-orange-700/60 font-mono text-xs px-2.5 py-1 rounded font-semibold tracking-wide uppercase;
+}
+
+.badge-moderate {
+  @apply bg-yellow-950/80 text-yellow-300 border border-yellow-700/60 font-mono text-xs px-2.5 py-1 rounded font-semibold tracking-wide uppercase;
+}
+
+.badge-low {
+  @apply bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 font-mono text-xs px-2.5 py-1 rounded font-semibold tracking-wide uppercase;
+}
+
+/* Data State Labels (Requirement 2) */
+.badge-live {
+  @apply bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 font-mono text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide;
+}
+
+.badge-model, .badge-estimate {
+  @apply bg-blue-950/80 text-blue-300 border border-blue-700/60 font-mono text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide;
+}
+
+.badge-simulation {
+  @apply bg-amber-950/80 text-amber-300 border border-amber-700/60 font-mono text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide;
+}
+
+.badge-historical, .badge-demo {
+  @apply bg-slate-900/90 text-slate-400 border border-slate-700/60 font-mono text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide;
+}
+
+.badge-verified {
+  @apply bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 font-mono text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-wide;
+}
+
+/* Radar pulse animation for critical sensors & alerts */
+@keyframes pulse-radar {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.radar-pulse {
+  animation: pulse-radar 2s infinite;
+}
+
+/* Subtly animated flow arrows on canvas */
+@keyframes dash-flow {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.flow-vector-line {
+  stroke-dasharray: 6, 4;
+  animation: dash-flow 1.5s linear infinite;
+}
